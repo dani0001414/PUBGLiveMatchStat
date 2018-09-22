@@ -31,18 +31,19 @@ function pubgStat() {
     liveData = JSON.parse(liveData);
     var liveStatus = "offline";
     var streamStart = null;
-    var gameID = liveData.data['0'].game_id;
+    var gameID;
     var gameIsPUBG = "false";
-    if(gameID == 493057){ gameIsPUBG = "true"}
     
     if (liveData.data.length > 0) {
+        gameID = liveData.data['0'].game_id
         liveStatus = liveData.data['0'].type;
         streamStart = Timestamp(liveData.data['0'].started_at);
-    }
+        if(gameID == 493057){ gameIsPUBG = "true"}
+    } 
     /******************************************************************* */
 
-    /**We Start Fetch the PUBG API Datas when the streamer online*/
-    if (liveStatus == "live") {
+    /**We Start Fetch the PUBG API Datas when the streamer online and play PUBG*/
+    if ((liveStatus == "live")&(gameIsPUBG == "true")) {
         /**Read the cached data. At the begening they are equals with null */
         outTable = JSON.parse(cache.get("formatedDiv"));
         var oldCreatedAt = cache.get("createdAt");
@@ -138,7 +139,7 @@ function pubgStat() {
         //MatchArrays[0].createdAt = 0;
         cache.put("formatedDiv", JSON.stringify(outTable), 1500);
         cache.put("createdAt", MatchArrays[0].createdAt, 1500);
-        cache.put("gameIsPUBG", gameIsPUBG,1500);
+        cache.put("gameIsPUBG", gameIsPUBG, 1500);
     }
 
 }
