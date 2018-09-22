@@ -133,14 +133,14 @@ function pubgStat() {
 
     }
 
-    /**If the streamer online we store the caches.*/
-    if (liveStatus == "live") {
+    /**If the streamer online and play PUBG we store the caches from the stat.*/
+    if ((liveStatus == "live")&(gameIsPUBG == "true")) {
         //outTable = [];
         //MatchArrays[0].createdAt = 0;
         cache.put("formatedDiv", JSON.stringify(outTable), 1500);
         cache.put("createdAt", MatchArrays[0].createdAt, 1500);
-        cache.put("gameIsPUBG", gameIsPUBG, 1500);
     }
+    cache.put("gameIsPUBG", gameIsPUBG, 1500);
 
 }
 
