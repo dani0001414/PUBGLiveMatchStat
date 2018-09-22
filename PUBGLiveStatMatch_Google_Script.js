@@ -119,7 +119,7 @@ function pubgStat() {
         var j = Object.keys(MatchArrays).length - 2;
 
         do {
-            if (j == -1) { break; } //Ha a fenti hátultesztelős ciklusban egy feltétel sem igaz akkor is van egy elem amit beletesz a tömbökbe. Viszont az 1-2=-1 miatt ki kell ugranunk a ciklusból.
+            if (j == -1) { break; } //If only just one array element in the array the j variable equal with -1 and need break the loop
 
             var sortId = outTable.length + 1;
             if (MatchArrays[j].stats.winPlace == 1) {
