@@ -12,6 +12,7 @@ function pubgStat() {
     var streamUserID = "<STREAMER-USERID>";  //Example TheVR Stream ID: 63493039
     var twitchAppClientID ="<TWITCH-APP-CLIENT-ID>";
     var PUBGPlayer = "<TWITCH-STREAMER-PUBG-ACCOUNT-NAME>";  //Example: TheVRJani
+    var PUBGApiToken = "<PUBG-API-APP-TOKEN>";
 
     /**Live Data Fetch*/
     var url_helix = "https://api.twitch.tv/helix/streams?user_id="+streamUserID;     //Example TheVR Stream ID: 63493039
@@ -60,7 +61,7 @@ function pubgStat() {
 
         var headers = {
             'accept': 'application/vnd.api+json',
-            'authorization': '<PUBG-API-APP-TOKEN>',
+            'authorization': PUBGApiToken,
         }
 
         var options = {
