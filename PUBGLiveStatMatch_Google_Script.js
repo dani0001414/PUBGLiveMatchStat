@@ -31,7 +31,10 @@ function pubgStat() {
     liveData = JSON.parse(liveData);
     var liveStatus = "offline";
     var streamStart = null;
-
+    var gameID = liveData.data['0'].game_id;
+    var gameIsPUBG = "false";
+    if(gameID == 493057){ gameIsPUBG = "true"}
+    
     if (liveData.data.length > 0) {
         liveStatus = liveData.data['0'].type;
         streamStart = Timestamp(liveData.data['0'].started_at);
@@ -135,6 +138,7 @@ function pubgStat() {
         //MatchArrays[0].createdAt = 0;
         cache.put("formatedDiv", JSON.stringify(outTable), 1500);
         cache.put("createdAt", MatchArrays[0].createdAt, 1500);
+        cache.put("gameIsPUBG", gameIsPUBG,1500);
     }
 
 }
@@ -142,10 +146,12 @@ function pubgStat() {
 /**doGet function is execute when somebody open the deployed webapp. The output is a html formated string type. You need to fetch with XMLHttpRequest(You can find a sample HTML file as well in the repository)*/
 function doGet() {
     var tableOut = JSON.parse(cache.get("formatedDiv"));
+    var gameIsPUBG = cache.get("gameIsPUBG");
     var htmlout = "";
-
+    var noStatMessage;
+    
     /**If the tableOut variable not null, we start a for loop. If the variable null we write the noStatMessage*/
-    var noStatMessage = "No Match information right now!"
+    if(gameIsPUBG == "true"){ noStatMessage = "1.match in progress!";} else {noStatMessage = "No PUBG Stream rigth know!"}
     var noStatYet = "<div style=\"font-family: 'Squada One', cursive, sans-serif; width:320px; background-color: #fbc22d; border:1px solid #b38100; color: #262626;border-top: 0px solid\">" + noStatMessage + "</div>";
 
     if (tableOut == null) { htmlout = noStatYet; }
