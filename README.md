@@ -8,7 +8,7 @@ First of all, you need to create a Twitch APP becouse of you need a Twitch APP C
 You can get the Streamer UserID with this Twitch API endpoint: https://api.twitch.tv/helix/users?login=username
 In my code i'm not implemented it becouse of the extra runtime due to this fetch.
 
-If you finished the earlier steps above, you need creat a new Google Script project and copy-paste the PUBGLiveStatMatch_Google_Script.js content to it and have to fill with this information the script and Deploy as a webapp. 
+If you finished the earlier steps above, you need to creat a new Google Script project and copy-paste the PUBGLiveStatMatch_Google_Script.js content to it and have to fill with this information the script and Deploy as a webapp. 
 
 You got a link at the end. You have to paste it this link into the right place in PUBGStatFetch.html.
 
